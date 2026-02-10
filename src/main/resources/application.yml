@@ -1,0 +1,45 @@
+server:
+  port: 8169
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://dragon:8180/realms/Springs%20of%20MUD"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://dragon:8180/realms/Springs%20of%20MUD"
+
+som:
+  modulith:
+    base-url: "http://dragon:9080"
+  keycloak:
+    base-url: "http://dragon:8180"
+    realm: "Springs of MUD"
+    client-id: som-infra
+    client-secret: ENC(g5minpCM4mPgEtZfZk6CRigtBRTXwvroQpCutBR2qdV6BEtf0FiDwn/YGHE1kN4eSOHtqkr1WcVjXT/iBd2JjjJwGkUsWNCOKWTPOC1TeCwYl/q8gxhVtphPuHi3mmlEHr6Xb7gMd+kNsJ1vrqyAIVILKycGNdiyz+QHH/Gbo6inZrfJYd3GpgBhJsl4wETJG9bCcj0lim82xZs+wrPfTtMAjz5Bq1patSR9J8srvt7uuCNL50xoP0WQAoLOefd/7PGq0cl8kcVwZSNHYAViLixxnIQ7u76vZIIdh+KZbL2o3iGbSujlCWISFykk9o3mudXYSSmWsL5ksaXYnR7x0Q==)
+    refresh:
+      skew-seconds: 30
+      poll-ms: 5000
+      max-attempts: 8
+      backoff-ms: 250
+  crypto:
+    key:
+      alias: som-api
+      password: ${KEYSTORE_PASSWORD}
+    keystore:
+      location: ${KEYSTORE_LOCATION}
+      password: ${KEYSTORE_PASSWORD}
+  infra-api:
+    username: som-infra
+    password: ENC(RRqsiJFwkUa5BJgB3+dEv1bArwaYWRICOdBcfwPC2T61EaU7qWKS0nljvFIvUha7ORuxmh7IwA/SYXRNuRk14olvaI046bOjBjXproOnUEUId6nLyylk0rGlGcm7DYurai9+1cFhEOra3b/m9fSoLCr8BuLMSfpKtuUtb/s9UKMo1IxeMl/QTT2LhxJrjXyqgGaWaWN97DsSxOgmrT2mLN6vo9UeCJVzM4LiZSvTReEmZiLac5BRZ9ByGYlm1ISBpqujRi9jFE9X25rxKpuIsy6EA07rNVRJiJgJFKpTWEqOgm/nOnYuUtVXR9tQnWXwmycfF59RRNNIo9V+nm9s2Q==)
+

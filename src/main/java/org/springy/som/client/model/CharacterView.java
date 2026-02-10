@@ -1,0 +1,39 @@
+package org.springy.som.client.model;
+
+import java.util.List;
+
+public record CharacterView(
+        String id,
+        String accountId,
+        String name,
+        String title,
+        String description,
+        String race,
+        String sex,
+        String characterClass,
+        String roomId,
+        String areaId,
+        String guild,
+        String role,
+        Boolean cloaked,
+        List<String> inventory,
+        int health,
+        int mana,
+        int movement,
+        int level,
+        int experience,
+        int accumulatedExperience,
+        int trains,
+        int practices,
+        int gold,
+        int silver,
+        int wimpy,
+        int position,
+        int maxWeight,
+        int maxItems,
+        int reputation,
+        int piercing,
+        int bashing,
+        int slashing,
+        int magic
+) {}
