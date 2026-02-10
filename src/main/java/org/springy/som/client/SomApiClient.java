@@ -75,6 +75,20 @@ public class SomApiClient {
         return snapshot == null ? List.of() : snapshot.players();
     }
 
+    public PlayerView getAccountByName(String accountName) {
+        if (accountName == null || accountName.isBlank()) return null;
+        CacheSnapshot snapshot = cache.get();
+        if (snapshot == null) {
+            refreshCache();
+            snapshot = cache.get();
+        }
+        if (snapshot == null) return null;
+        return snapshot.players().stream()
+                .filter(player -> accountName.equals(player.accountName()))
+                .findFirst()
+                .orElse(null);
+    }
+
     private List<RemotePlayerView> fetchPlayerAccounts() {
         String token = tokenClient.getAccessToken();
         List<RemotePlayerView> response = restClient.get()
