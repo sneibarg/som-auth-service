@@ -4,7 +4,7 @@
 
 	<groupId>org.springy.som</groupId>
 	<artifactId>som-auth-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>som-auth-service</name>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
