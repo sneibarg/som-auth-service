@@ -1,7 +1,9 @@
 package org.springy.som.security;
 
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
+@Component
 public class KeycloakTokenRefresher {
     private final KeycloakTokenClient tokenClient;
 

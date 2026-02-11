@@ -38,6 +38,12 @@ class WebSecurityConfigTest {
     }
 
     @Test
+    void tokenDecodeEndpointIsPermitted() throws Exception {
+        mockMvc.perform(get("/api/auth/token/decode"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
     void otherEndpointsRequireAuth() throws Exception {
         mockMvc.perform(get("/api/auth/other"))
                 .andExpect(status().isUnauthorized());
@@ -66,6 +72,11 @@ class WebSecurityConfigTest {
 
             @GetMapping("/api/auth/other")
             String other() {
+                return "ok";
+            }
+
+            @GetMapping("/api/auth/token/decode")
+            String decode() {
                 return "ok";
             }
         }
