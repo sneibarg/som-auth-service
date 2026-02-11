@@ -49,6 +49,7 @@ public class KeycloakTokenClient {
     @EventListener(ApplicationReadyEvent.class)
     public void warmUp() {
         ensureFreshTokenOrThrow();
+        log.info("Warmed up Keycloak Token");
     }
 
     public String getAccessToken() {
