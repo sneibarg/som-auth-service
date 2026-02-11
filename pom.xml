@@ -73,18 +73,18 @@
 		</dependency>
 	</dependencies>
 
-	<distributionManagement>
-		<repository>
-			<id>nexus-releases</id>
-			<name>Nexus Releases</name>
-			<url>http://dragon:8089/repository/maven-releases/</url>
-		</repository>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<name>Nexus Snapshots</name>
-			<url>http://dragon:8089/repository/maven-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+<!--	<distributionManagement>-->
+<!--		<repository>-->
+<!--			<id>nexus-releases</id>-->
+<!--			<name>Nexus Releases</name>-->
+<!--			<url>http://dragon:8089/repository/maven-releases/</url>-->
+<!--		</repository>-->
+<!--		<snapshotRepository>-->
+<!--			<id>nexus-snapshots</id>-->
+<!--			<name>Nexus Snapshots</name>-->
+<!--			<url>http://dragon:8089/repository/maven-snapshots/</url>-->
+<!--		</snapshotRepository>-->
+<!--	</distributionManagement>-->
 
 	<build>
 		<plugins>
@@ -92,27 +92,27 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>client-jar</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-						<configuration>
-							<classifier>client</classifier>
-							<includes>
-								<include>org/springy/som/client/model/**</include>
-								<include>org/springy/som/security/**</include>
-								<include>org/springy/som/util/**</include>
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-jar-plugin</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>client-jar</id>-->
+<!--						<phase>package</phase>-->
+<!--						<goals>-->
+<!--							<goal>jar</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<classifier>client</classifier>-->
+<!--							<includes>-->
+<!--								<include>org/springy/som/client/model/**</include>-->
+<!--								<include>org/springy/som/security/**</include>-->
+<!--								<include>org/springy/som/util/**</include>-->
+<!--							</includes>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
