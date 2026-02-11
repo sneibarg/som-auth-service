@@ -22,9 +22,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes = SecurityConfigTest.TestApp.class)
+@SpringBootTest(classes = WebSecurityConfigTest.TestApp.class)
 @AutoConfigureMockMvc
-class SecurityConfigTest {
+class WebSecurityConfigTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -45,7 +45,7 @@ class SecurityConfigTest {
 
     @SpringBootConfiguration
     @EnableAutoConfiguration
-    @Import({SecurityConfig.class, JwtAuthConverterConfig.class})
+    @Import({WebSecurityConfig.class, JwtAuthConverterConfig.class})
     static class TestApp {
         @Bean
         JwtDecoder jwtDecoder() {

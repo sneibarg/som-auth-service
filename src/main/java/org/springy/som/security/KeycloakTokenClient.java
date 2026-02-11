@@ -30,7 +30,6 @@ public class KeycloakTokenClient {
     private final KeycloakRefreshProps refreshProps;
     private final String issuerUri;
     private final AtomicReference<URI> tokenEndpoint = new AtomicReference<>();
-
     private final AtomicReference<CachedToken> cache = new AtomicReference<>();
     private final ReentrantLock refreshLock = new ReentrantLock();
 
