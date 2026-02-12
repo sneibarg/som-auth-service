@@ -11,18 +11,15 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http,
-                                            JwtAuthenticationConverter jwtAuthenticationConverter) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/actuator/health", "/actuator/info").permitAll()
-                        .requestMatchers("/api/auth/login").permitAll()
-                        .requestMatchers("/api/auth/token/decode").permitAll()
-                        .anyRequest().denyAll()
-                )
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt
-                        .jwtAuthenticationConverter(jwtAuthenticationConverter)));
+    SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationConverter jwtAuthenticationConverter) throws Exception {
+        http.csrf(AbstractHttpConfigurer::disable)
+            .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/actuator/health", "/actuator/info").permitAll()
+            .requestMatchers("/api/auth/login").permitAll()
+            .requestMatchers("/api/auth/token/decode").permitAll()
+            .anyRequest().denyAll())
+            .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt
+            .jwtAuthenticationConverter(jwtAuthenticationConverter)));
 
         return http.build();
     }
