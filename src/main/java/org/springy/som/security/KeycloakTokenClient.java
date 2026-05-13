@@ -53,7 +53,8 @@ public class KeycloakTokenClient {
 
     public String getAccessToken() {
         CachedToken existing = cache.get();
-        if (existing != null && existing.isValid()) return existing.token();
+        if (existing != null && existing.isValid())
+            return existing.token();
 
         ensureFreshTokenOrThrow();
         CachedToken now = cache.get();
@@ -102,8 +103,8 @@ public class KeycloakTokenClient {
     }
 
     public void refreshIfNeeded() {
-        if (!needsRefreshSoon()) return;
-        if (!refreshLock.tryLock()) return;
+        if (!needsRefreshSoon() || !refreshLock.tryLock())
+            return;
         try {
             if (!needsRefreshSoon()) return;
             TokenResponse tr = requestPasswordGrantToken();

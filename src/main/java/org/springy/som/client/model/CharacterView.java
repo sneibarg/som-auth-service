@@ -1,6 +1,7 @@
 package org.springy.som.client.model;
 
 import java.util.List;
+import java.util.Map;
 
 public record CharacterView(
         String id,
@@ -8,32 +9,32 @@ public record CharacterView(
         String name,
         String title,
         String description,
-        String race,
         String sex,
-        String characterClass,
         String roomId,
         String areaId,
         String guild,
         String role,
+        Map<String, Object> equipped,
+        Map<String, Object> promptFormat,
+        Map<String, Object> characterRace,
+        Map<String, Object> characterClass,
+        Map<String, Object> characterFlags,
+        Map<String, Object> armorClass,
+        Map<String, Object> characterAttributes,
+        Map<String, Object> statusFlags,
+        List<Map<String, Object>> inventory,
+        List<Map<String, Object>> effects,
+        List<Map<String, Object>> skills,
+        List<Map<String, Object>> spells,
         Boolean cloaked,
-        List<String> inventory,
-        int health,
+        int hit,
+        int maxHit,
         int mana,
+        int maxMana,
         int movement,
+        int maxMovement,
         int level,
-        int experience,
-        int accumulatedExperience,
-        int trains,
-        int practices,
         int gold,
         int silver,
-        int wimpy,
-        int position,
-        int maxWeight,
-        int maxItems,
-        int reputation,
-        int piercing,
-        int bashing,
-        int slashing,
-        int magic
+        int trust
 ) {}

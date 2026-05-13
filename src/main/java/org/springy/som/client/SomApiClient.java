@@ -22,20 +22,15 @@ import java.util.concurrent.locks.ReentrantLock;
 @Component
 @Slf4j
 public class SomApiClient {
-    private static final ParameterizedTypeReference<List<RemotePlayerView>> PLAYER_LIST =
-            new ParameterizedTypeReference<>() {};
-    private static final ParameterizedTypeReference<List<CharacterView>> CHARACTER_LIST =
-            new ParameterizedTypeReference<>() {};
-
+    private static final ParameterizedTypeReference<List<RemotePlayerView>> PLAYER_LIST =new ParameterizedTypeReference<>() {};
+    private static final ParameterizedTypeReference<List<CharacterView>> CHARACTER_LIST = new ParameterizedTypeReference<>() {};
     private final RestClient restClient;
     private final KeycloakTokenClient tokenClient;
     private final String baseUrl;
     private final ReentrantLock refreshLock = new ReentrantLock();
     private final AtomicReference<CacheSnapshot> cache = new AtomicReference<>();
 
-    public SomApiClient(RestClient.Builder builder,
-                        KeycloakTokenClient tokenClient,
-                        @Value("${som.modulith.base-url}") String baseUrl) {
+    public SomApiClient(RestClient.Builder builder, KeycloakTokenClient tokenClient, @Value("${som.modulith.base-url}") String baseUrl) {
         this.restClient = builder.build();
         this.tokenClient = tokenClient;
         this.baseUrl = baseUrl;
@@ -54,7 +49,8 @@ public class SomApiClient {
 
     @Scheduled(fixedDelayString = "${som.keycloak.refresh.poll-ms:5000}", initialDelayString = "${som.keycloak.refresh.poll-ms:5000}")
     public void refreshCache() {
-        if (!refreshLock.tryLock()) return;
+        if (!refreshLock.tryLock())
+            return;
         try {
             List<RemotePlayerView> players = fetchPlayerAccounts();
             CacheSnapshot refreshed = buildSnapshot(players);
