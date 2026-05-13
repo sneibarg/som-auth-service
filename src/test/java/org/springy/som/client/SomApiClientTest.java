@@ -48,6 +48,9 @@ class SomApiClientTest {
     @Mock
     private RestClient.ResponseSpec charactersResponseSpec;
 
+    @Mock
+    private CharacterView characterView;
+
     @Test
     @SuppressWarnings("unchecked")
     void getAccountByName_returnsEnrichedPlayer() throws Exception {
@@ -73,46 +76,12 @@ class SomApiClientTest {
                 "secret",
                 List.of("c1")
         );
+        when(characterView.id()).thenReturn("c1");
         when(playersResponseSpec.body(any(ParameterizedTypeReference.class)))
                 .thenReturn(List.of(remotePlayer));
 
-        CharacterView character = new CharacterView(
-                "c1",
-                "acct-1",
-                "AliceChar",
-                "title",
-                "desc",
-                "race",
-                "sex",
-                "class",
-                "room",
-                "area",
-                "guild",
-                "role",
-                false,
-                List.of(),
-                10,
-                5,
-                7,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
-        );
         when(charactersResponseSpec.body(any(ParameterizedTypeReference.class)))
-                .thenReturn(List.of(character));
+                .thenReturn(List.of(characterView));
 
         SomApiClient client = new SomApiClient(restClientBuilder, tokenClient, "http://modulith");
         PlayerView result = client.getAccountByName("alice");
